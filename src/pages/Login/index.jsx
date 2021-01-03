@@ -8,50 +8,55 @@ import {
     SubTitle,
     MainTextDiv,
     BottomTextDiv,
-    DefaultText,
-    LoginInput
+    DefaultText
 } from './style'
-import HidePassword from '../../components/PasswordEye'
+import LoginForm from '../../components/LoginForm/SubmitForm'
+import { IconContext } from 'react-icons'
 
 const MainPage = () => {
 
     return(
 
         <Container>
-            <LoginDiv>
-                <WelcomeTextDiv>
-                    <MainTextDiv>
 
-                        <MainTitle> 
-                            Seja bem-vindo 
-                        </MainTitle>
-                        <SubTitle>
-                            Para continuar<br/>
-                            por favor faça login
-                        </SubTitle>
+            <IconContext.Provider value={{ size: 40 }} style={{color: `#788281`}}>
 
-                    </MainTextDiv>
-                    <BottomTextDiv>
+                <LoginDiv>
+                    <WelcomeTextDiv>
+                        <MainTextDiv>
 
-                        <DefaultText logo>
-                            Logotipo
+                            <MainTitle> 
+                                Seja bem-vindo 
+                            </MainTitle>
+                            <SubTitle>
+                                Para continuar<br/>
+                                por favor faça login
+                            </SubTitle>
+
+                        </MainTextDiv>
+                        <BottomTextDiv>
+
+                            <DefaultText logo>
+                                Logotipo
+                            </DefaultText>
+
+                        </BottomTextDiv>
+                    </WelcomeTextDiv>
+                    <LoginPanel>
+
+                        <DefaultText>
+                            Utilize o painel agora<br/>
+                            mesmo
                         </DefaultText>
 
-                    </BottomTextDiv>
-                </WelcomeTextDiv>
-                <LoginPanel>
+                        <LoginForm />
 
-                    <DefaultText>
-                        Utilize o painel agora<br/>
-                        mesmo
-                    </DefaultText>
+                    </LoginPanel>
+                </LoginDiv>
 
-                    <LoginInput for="email" placeholder="Digite seu e-mail"/>
-                    <LoginInput for="senha" id="myInput" placeholder="Digite a sua senha"/>
-                    <HidePassword></HidePassword>
+            </IconContext.Provider>
 
-                </LoginPanel>
-            </LoginDiv>
+
         </Container>
 
     )

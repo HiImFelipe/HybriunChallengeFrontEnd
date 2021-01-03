@@ -7,7 +7,7 @@ export const Container = styled.div`
     justify-content: center;
     height: 100vh;
     width: 100vw;
-    background-color: blue;
+    background-color: green;
 `
 
 export const LoginDiv = styled.div`
@@ -97,12 +97,4 @@ export const DefaultText = styled.h2`
         font-size: 40px;
     }
 
-`
-
-export const LoginInput = styled.input`
-    border-style: none none solid none;
-    margin-top: 70px;
-    font-size: 24px;
-    height: 40px;
-    width: 100%;
 `
