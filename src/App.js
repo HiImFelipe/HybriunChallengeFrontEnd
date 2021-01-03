@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import {
     BrowserRouter as Router, 
@@ -8,17 +7,35 @@ import {
     Redirect
 } from 'react-router-dom'
 
-import mainPage from './pages/MainPage/index'
+import MainPage from './pages/MainPage/index'
 import notFound from './pages/PageNotFound/index'
-import login from './pages/Login/index'
+import Login from './pages/Login/index'
+import GetCookie from './components/GetCookie/GetCookie';
 
 function App() {
+
+  let loggedIn = false
+
+  if(document.cookie){
+    let session = GetCookie('userToken')
+
+    console.log(session)
+    loggedIn = true
+  }
+
   return (
 
     <Router>
       <Switch>
-        <Route exact path="/" component={mainPage} />
-        <Route exact path="/login" component={login}/>
+        <Route exact path="/">
+          {loggedIn ?  <MainPage /> : <Redirect to="/login" />} 
+        </Route>
+        <Route exact path="/login" component={Login}>
+          {loggedIn ? <Redirect to="/" /> : <Login />}
+        </Route>
+        <Route>
+          {loggedIn ?  <MainPage /> : <Redirect to="/login" />} 
+        </Route>
         <Route component={notFound} />
       </Switch>
     </Router>

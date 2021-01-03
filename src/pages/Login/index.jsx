@@ -19,7 +19,7 @@ const MainPage = () => {
 
         <Container>
 
-            <IconContext.Provider value={{ size: 40 }} style={{color: `#788281`}}>
+            <IconContext.Provider value={{ size: 40 }}>
 
                 <LoginDiv>
                     <WelcomeTextDiv>

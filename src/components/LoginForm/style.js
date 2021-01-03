@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const LoginInput = styled.input`
     border-style: none none solid none;
+    border-color: #E0E0E0;
     margin-top: 70px;
     font-size: 24px;
     height: 60px;
@@ -10,7 +11,7 @@ export const LoginInput = styled.input`
 `
 
 export const LoginButton = styled.button`
-    margin-top: 70px;
+    margin-top: 30px;
     background-color: #0066F0;
     color: white;
     font-size: 24px;
@@ -31,6 +32,7 @@ export const ForgotPassword = styled.h3`
 export const PasswordInputElement = styled.input`
     padding: .8rem 1rem;
     border-style: none none solid none;
+    border-color: #E0E0E0;
     font-size: 24px;
     width: 100%;
 `
@@ -51,4 +53,21 @@ export const IconStyle = styled.div`
     position: absolute;
     right: 5px;
     top: 5px;
+` 
+export const ErrorDiv = styled.div`
+    display: inline-block;
+    position: relative;
+    margin-top: 40px;
+    height: 20px;
+    width: 100%;
+` 
+
+
+export const ErrorMessage = styled.h1`
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: red;
+    font-weight: lighter;
+    font-size: 25px;
 ` 
