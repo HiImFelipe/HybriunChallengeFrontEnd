@@ -10,6 +10,7 @@ import {
 import MainPage from './pages/MainPage/index'
 import notFound from './pages/PageNotFound/index'
 import Login from './pages/Login/index'
+import AddContributor from './pages/AddContributor/index'
 import GetCookie from './components/GetCookie/GetCookie';
 
 function App() {
@@ -33,8 +34,8 @@ function App() {
         <Route exact path="/login" component={Login}>
           {loggedIn ? <Redirect to="/" /> : <Login />}
         </Route>
-        <Route>
-          {loggedIn ?  <MainPage /> : <Redirect to="/login" />} 
+        <Route exact path="/addcontributor">
+          {loggedIn ?  <AddContributor /> : <Redirect to="/login" />} 
         </Route>
         <Route component={notFound} />
       </Switch>

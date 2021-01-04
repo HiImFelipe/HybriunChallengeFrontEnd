@@ -11,6 +11,13 @@ import {
     ErrorMessage,
     ErrorDiv
 } from './style'
+import {
+    BrowserRouter as Router, 
+    Route, 
+    Switch, 
+    Link, 
+    Redirect
+} from 'react-router-dom'
 
 import api from '../../api/api'
 
@@ -48,6 +55,9 @@ export default function LoginForm(props){
             })
 
             document.cookie = `userToken=${response.data.sessionToken}`
+            {    
+            <Redirect to="/"/>
+            }
 
         }catch(e){
 
@@ -109,7 +119,6 @@ export default function LoginForm(props){
                         {errors.password.message}
                     </ErrorMessage>
                 }   
-                
             </ErrorDiv>
 
             <LoginButton type="submit">

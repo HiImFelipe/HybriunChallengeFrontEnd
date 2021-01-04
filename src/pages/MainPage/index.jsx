@@ -1,12 +1,16 @@
 import React from 'react'
+import {
+    Container
+}from './style'
+import Menu from '../../components/Menu/Menu'
 
 const MainPage = () => {
 
     return(
 
-        <div>
-            
-        </div>
+        <Container>
+            <Menu />
+        </Container>
 
     )
 
