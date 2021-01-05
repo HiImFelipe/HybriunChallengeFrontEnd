@@ -13,7 +13,9 @@ import {
 import LoginForm from '../../components/LoginForm/SubmitForm'
 import { IconContext } from 'react-icons'
 
-const MainPage = () => {
+const MainPage = (props) => {
+
+    console.log(props.history)
 
     return(
 
@@ -49,7 +51,7 @@ const MainPage = () => {
                             mesmo
                         </DefaultText>
 
-                        <LoginForm />
+                        <LoginForm history={props.history}/>
 
                     </LoginPanel>
                 </LoginDiv>

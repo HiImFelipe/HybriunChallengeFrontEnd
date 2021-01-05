@@ -14,7 +14,7 @@ export const EmptyDiv = styled.div`
 export const DefaultInput = styled.input`
     border-style: none none solid none;
     border-color: #E0E0E0;
-    font-size: ${props => props.name ? "24px" : "18px"};
+    font-size: ${props => props.contributorname ? "24px" : "18px"};
     height: 60px;
     width: 100%;
 `
@@ -25,7 +25,6 @@ export const FormDiv = styled.div`
     display: flex;
     flex-direction: column;
     width: 500px;
-    height: calc(100% - 50px);
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     border-radius: 20px;
 `
@@ -102,4 +101,10 @@ export const HorarioDivLeft = styled.div`
     flex: 1;
     display: flex;
     flex-direction: column;
+`
+
+export const ErroHandler = styled.h1`
+    font-size: 18px;
+    color: red;
+    margin-top: 20px;
 `

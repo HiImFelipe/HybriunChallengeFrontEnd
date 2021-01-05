@@ -49,10 +49,3 @@ export const DefaultButton = styled.button`
     background-color: ${props => props.blue ? 'blue' : 'red'};
     color: white;
 `
-
-export const MainDiv = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    height: 100%;
-`

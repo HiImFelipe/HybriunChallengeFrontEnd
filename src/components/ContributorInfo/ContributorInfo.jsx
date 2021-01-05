@@ -1,101 +1,16 @@
-import React, { useState } from 'react'
-import { useForm } from 'react-hook-form'
-import getCookie from '../GetCookie/GetCookie'
-import {
-    EmptyDiv,
-    Container,
-    DefaultInput,
-    TopDiv,
-    FormDiv,
-    PictureDiv,
-    NameDiv,
-    Avatar,
-    DefaultText,
-    MiddleDiv,
-    LeftSide,
-    RightSide,
-    OcupacaoDiv,
-    HorarioDiv,
-    HorarioDivLeft,
-    HorarioDivRight,
-    ErroHandler
-} from './style'
-import api from '../../api/api'
+import React from 'react'
 
-
-export default function AddContributorForm(props){
-
-    let session
-    const {register, handleSubmit, errors} = useForm()
-    
-
-    if(document.cookie){
-        session = getCookie('userToken')
-    }
-
-    const errorHandler = () => {
-
-        if(errors)
-            console.log(errors)
-
-    }
-
-    const onSubmit = async (data) => {
-
-        console.log('data')
-
-        try{
-
-            const {
-                nome, 
-                email, 
-                cpf, 
-                celular, 
-                ocupacao, 
-                expedienteEntrada, 
-                expedienteSaida,
-                almocoEntrada,
-                almocoSaida
-            } = data
-
-
-            const response = await api.post('/contributors/register',
-            {
-                nome, 
-                email, 
-                cpf, 
-                celular, 
-                ocupacao, 
-                expedienteEntrada, 
-                expedienteSaida,
-                almocoEntrada,
-                almocoSaida
-            },
-            {
-                headers: {
-                    Authorization: `Bearer ${session}`
-                }
-            })
-
-
-        }catch(e){
-
-            console.log({
-                error: e.response.data,
-            })
-
-        }
-
-    }
+export default function ContributorInfo(){
 
     return(
 
         <Container>
+
             <EmptyDiv>
 
             </EmptyDiv>
 
-            <form id='my-form' onSubmit={handleSubmit(onSubmit)}>
+            
                 <FormDiv>
                     <TopDiv>
                         <PictureDiv>
@@ -210,7 +125,6 @@ export default function AddContributorForm(props){
                     </ErroHandler>
 
                 </FormDiv>
-            </form>
 
         </Container>
 

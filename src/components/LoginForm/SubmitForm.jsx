@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import MainPage from '../../pages/MainPage/index'
 import { useForm } from 'react-hook-form'
 import { FaEye } from 'react-icons/fa'
 import {
@@ -11,12 +12,8 @@ import {
     ErrorMessage,
     ErrorDiv
 } from './style'
-import {
-    BrowserRouter as Router, 
-    Route, 
-    Switch, 
-    Link, 
-    Redirect
+import { 
+    useHistory
 } from 'react-router-dom'
 
 import api from '../../api/api'
@@ -24,6 +21,9 @@ import api from '../../api/api'
 export default function LoginForm(props){
 
     const [currentType, setCurrentType] = useState('text')
+    const [redirect, setRedirect] = useState(false)
+
+    const history = useHistory()
 
     const {register, handleSubmit, errors} = useForm()
 
@@ -55,12 +55,14 @@ export default function LoginForm(props){
             })
 
             document.cookie = `userToken=${response.data.sessionToken}`
-            {    
-            <Redirect to="/"/>
-            }
+            document.cookie = `userName=${response.data.contributor.nome}`
+
+            history.push('/')
 
         }catch(e){
 
+            console.log(e)
+            /*
             console.log({
                 error: e.response.data,
                 data: {
@@ -68,64 +70,67 @@ export default function LoginForm(props){
                     password: data.password
                 }
             })
+            */
 
         }
 
     }
 
     return(
-        
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <div>
 
-            <LoginInput 
-                name="email" 
-                placeholder="Digite seu e-mail" 
-                ref={register({
-                    required: "O email é obrigatório"
-                })}
-            />
+            <form onSubmit={handleSubmit(onSubmit)}>
 
-            <PasswordDiv>
-
-                <PasswordInputElement 
-                    name="password" 
-                    type={currentType}
-                    placeholder="Digite sua senha"
-                    ref={register({ 
-                        required: "A senha é obrigatória",
+                <LoginInput 
+                    name="email" 
+                    placeholder="Digite seu e-mail" 
+                    ref={register({
+                        required: "O email é obrigatório"
                     })}
                 />
-                <IconStyle>
-                    <FaEye onClick={() => handleInputType()} style={{color: "#E0E0E0",}} />
-                </IconStyle>
 
-            </PasswordDiv>
+                <PasswordDiv>
 
-            <ForgotPassword>
-                Esqueci minha senha
-            </ForgotPassword>
-            
-            <ErrorDiv>
-                {
-                    errors.email &&
-                    <ErrorMessage>
-                        {errors.email.message}
-                    </ErrorMessage>
-                }   
-                {
+                    <PasswordInputElement 
+                        name="password" 
+                        type={currentType}
+                        placeholder="Digite sua senha"
+                        ref={register({ 
+                            required: "A senha é obrigatória",
+                        })}
+                    />
+                    <IconStyle>
+                        <FaEye onClick={() => handleInputType()} style={{color: "#E0E0E0",}} />
+                    </IconStyle>
 
-                    errors.password && !errors.email &&
-                    <ErrorMessage>
-                        {errors.password.message}
-                    </ErrorMessage>
-                }   
-            </ErrorDiv>
+                </PasswordDiv>
 
-            <LoginButton type="submit">
-                Login
-            </LoginButton>
-            
-        </form>
+                <ForgotPassword>
+                    Esqueci minha senha
+                </ForgotPassword>
+                
+                <ErrorDiv>
+                    {
+                        errors.email &&
+                        <ErrorMessage>
+                            {errors.email.message}
+                        </ErrorMessage>
+                    }   
+                    {
+
+                        errors.password && !errors.email &&
+                        <ErrorMessage>
+                            {errors.password.message}
+                        </ErrorMessage>
+                    }   
+                </ErrorDiv>
+
+                <LoginButton type="submit">
+                    Login
+                </LoginButton>
+                
+            </form>
+        </div>
 
     )
 

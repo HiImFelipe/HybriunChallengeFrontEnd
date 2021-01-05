@@ -18,10 +18,13 @@ import { BsGrid } from 'react-icons/bs'
 import { FiBell } from 'react-icons/fi'
 import { IoPersonAddSharp } from 'react-icons/io5'
 import { Link } from 'react-router-dom'
+import getCookie from '../../components/GetCookie/GetCookie'
 
 export default function Menu(){
 
     let [display, setDisplay] = useState(false)
+
+    const userName = getCookie('userName')
 
     const changeDisplayType = () => {
 
@@ -78,7 +81,7 @@ export default function Menu(){
                     </BellDiv>
 
                     <BsGrid color={"#B9BDBC"} />
-                    <DefaultText contributorname>Contributor Name</DefaultText>
+                    <DefaultText contributorname>{userName}</DefaultText>
                     <Avatar src="https://www.w3schools.com/howto/img_avatar.png"/>
                 </RightSideDiv>
 

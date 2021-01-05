@@ -1,4 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
+import Menu from '../../components/Menu/Menu'
+import Title from '../../components/Title/Title'
 import {
     Container,
     TitleContainer,
@@ -6,34 +8,21 @@ import {
     TitleRightSide,
     LeftSideButtonDiv,
     RightSideButtonDiv,
-    DefaultButton,
-    MainDiv
-}from './style'
-import Menu from '../../components/Menu/Menu'
-import Title from '../../components/Title/Title'
-import AddContributorForm from '../../components/AddContributorForm/AddContributorForm'
+    DefaultButton
+} from './style'
 
-const AddContributor = () => {
-    
-    const [callSubmit, setCallSubmit] = useState(false)
-    const title = "Adicionar colaborador"
-
-    const handleCallSubmit = () => {
-
-        console.log('salveTM')
-        setCallSubmit(true)
-
-    }
+export default function Contributor(props){
 
     return(
 
         <Container>
-            
+
             <Menu />
+
             <TitleContainer>
 
                 <TitleLeftSide>
-                    <Title titleName={title} />
+                    <Title titleName="Detalhes do contribuidor" />
                 </TitleLeftSide>
 
                 <TitleRightSide>
@@ -52,17 +41,8 @@ const AddContributor = () => {
 
             </TitleContainer>
 
-            <MainDiv>
-                <div> {/* Necessary as the AddContributorForm component takes 100% of the width */}
-                    <AddContributorForm />
-                </div>
-                
-            </MainDiv>
-
         </Container>
 
     )
 
 }
-
-export default AddContributor 
